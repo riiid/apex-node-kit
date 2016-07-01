@@ -1,0 +1,10 @@
+
+{
+  "name": "",
+  "description": "",
+  "memory": 128,
+  "timeout": 5,
+  "role": "",
+  "defaultEnvironment": "dev",
+  "environment": {}
+}
