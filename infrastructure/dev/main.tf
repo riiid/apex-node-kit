@@ -7,7 +7,6 @@ variable "apex_function_hello" {}
 /**
  * resources
  */
-
 resource "aws_api_gateway_rest_api" "api" {
   name        = "apex-node-kit-api"
   description = "api for apex-node-kit"

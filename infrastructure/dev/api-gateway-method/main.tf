@@ -39,6 +39,14 @@ resource "aws_api_gateway_integration" "integration" {
   type                    = "AWS"
   uri                     = "arn:aws:apigateway:${var.aws_region}:lambda:path/2015-03-31/functions/${var.lambda_function}/invocations"
   credentials             = "${var.credentials}"
+
+  request_templates = {
+    "application/x-www-form-urlencoded" = <<EOF
+{
+  "postBody": $input.json('$')
+}
+EOF
+  }
 }
 
 resource "aws_api_gateway_method_response" "200" {
