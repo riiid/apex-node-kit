@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "new": "npm install && rimraf .git",
-    "lint": "nodemon --watch functions --exec eslint functions/**",
+    "new": "npm install --cache-min 999999 --depth 0 && rimraf .git",
+    "lint": "nodemon --watch functions --watch lib --exec eslint functions/** lib/**",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "kykim <kykim@riiid.co>",
