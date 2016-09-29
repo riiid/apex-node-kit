@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   entry: './index.js',
   target: 'node',
@@ -8,6 +10,9 @@ module.exports = {
     path: './dist',
     filename: 'index.js',
     libraryTarget: 'commonjs2'
+  },
+  resolve: {
+    root: path.resolve('../../lib')
   },
   module: {
     loaders: [

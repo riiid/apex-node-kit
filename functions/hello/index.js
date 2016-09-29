@@ -1,4 +1,9 @@
-console.log('hello there');
+import hello$ from 'hello';
+
 export default (event, context, cb) => {
-  cb(null, {event, context});
+  hello$().subscribe(msg => {
+    cb(null, msg);
+  }, err => {
+    cb(err);
+  });
 };
