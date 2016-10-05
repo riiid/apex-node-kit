@@ -87,6 +87,7 @@ $ npm run lint
 
 \`\`\`
 $ apex deploy
+$ echo -n '{"query": "query{hello}"}' | apex invoke graphql
 \`\`\`
 
 ## deploy infra
@@ -95,6 +96,8 @@ $ apex deploy
 $ apex infra get
 $ apex infra plan
 $ apex infra apply
+<url>
+$ curl -H "Content-Type: application/json" -d '{"query": "query{hello}"}' <url>/dev/graphql
 \`\`\``);
     this.updated.add({readme: 'README.md'});
   } catch (err) {

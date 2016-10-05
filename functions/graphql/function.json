@@ -1,0 +1,10 @@
+{
+  "description": "a function process graphql query",
+  "memory": 128,
+  "timeout": 10,
+  "handler": "dist.default",
+  "hooks": {
+    "build": "../../node_modules/.bin/webpack --config ../../webpack.config.js --bail",
+    "clean": "../../node_modules/.bin/rimraf dist"
+  }
+}
