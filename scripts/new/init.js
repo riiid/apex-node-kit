@@ -81,6 +81,7 @@ ${this.prompt.description}
 
 \`\`\`
 $ npm run lint
+$ npm test
 \`\`\`
 
 ## deploy function
