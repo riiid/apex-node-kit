@@ -1,7 +1,7 @@
 # ∆pex-node-kit
 
 Riiid flavored [apex](https://github.com/apex/apex) starter kit.
-Write your [AWS Lambda](http://aws.amazon.com/lambda/) functions with `webpack` & `babel`. Enjoy :alien:
+Write & deploy your endpoint (especially [graphql](http://graphql.org/)) with ease. Enjoy :alien:
 
 ## start
 
