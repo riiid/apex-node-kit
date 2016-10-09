@@ -5,7 +5,7 @@ variable "apex_environment" {}
 variable "apex_function_graphql" {}
 
 module "api" {
-  source = "../api-gateway-rest-api"
+  source = "../modules/api-gateway-rest-api"
   name   = "apex-node-kit"
 }
 

@@ -15,7 +15,7 @@ resource "aws_api_gateway_resource" "graphql" {
 }
 
 module "graphql-post" {
-  source          = "../../api-gateway-method"
+  source          = "../../modules/api-gateway-method"
   method          = "POST"
   rest_api_id     = "${var.api_id}"
   parent_id       = "${var.api_root_resource_id}"
@@ -25,7 +25,7 @@ module "graphql-post" {
 }
 
 module "deploy" {
-  source      = "../../api-gateway-deploy"
+  source      = "../../modules/api-gateway-deploy"
   rest_api_id = "${var.api_id}"
   stage_name  = "${var.environment}"
   depends_id  = "${module.graphql-post.id}"
