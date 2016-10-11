@@ -15,7 +15,7 @@ resource "aws_api_gateway_resource" "graphql" {
 }
 
 module "graphql-post" {
-  source          = "../../modules/api-gateway-method"
+  source          = "../../modules/api-gateway-method-post"
   method          = "POST"
   rest_api_id     = "${var.api_id}"
   parent_id       = "${var.api_root_resource_id}"
