@@ -1,3 +1,5 @@
+variable "name" {}
+
 variable "aws_region" {}
 
 variable "apex_environment" {}
@@ -6,7 +8,7 @@ variable "apex_function_graphql" {}
 
 module "api" {
   source = "../modules/api-gateway-rest-api"
-  name   = "apex-node-kit"
+  name   = "${var.name}"
 }
 
 module "graphql" {

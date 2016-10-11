@@ -34,7 +34,7 @@ function Init(prompt) {
 Init.prototype.git = function() {
   try {
     rimraf.sync(path.join(utils.root, '.git'));
-    this.deleted.add({git: './git'});
+    this.deleted.add({git: '.git'});
   } catch (err) {
   }
 };
@@ -55,6 +55,19 @@ Init.prototype.pkg = function() {
   } catch (err) {
   }
 };
+
+Init.prototype.tfvars = function() {
+  try {
+    var _opt = this.prompt;
+    var _tfvars = {
+      name: _opt.name
+    };
+    var filepath = path.join(utils.root, 'infrastructure', 'dev', 'terraform.tfvars');
+    fs.writeFileSync(filepath, JSON.stringify(_tfvars, null, 2));
+    this.created.add({tfvars: 'infrastructure/dev/terraform.tfvars'});
+  } catch (err) {
+  }
+}
 
 Init.prototype.project= function() {
   try {
@@ -107,6 +120,7 @@ $ curl -H "Content-Type: application/json" -d '{"query": "query{hello}"}' <url>/
 
 Init.prototype.run = function() {
   this.pkg();
+  this.tfvars();
   this.project();
   this.git();
   this.readme();
