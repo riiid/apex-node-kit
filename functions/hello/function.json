@@ -1,5 +1,5 @@
 {
-  "description": "a function process graphql query",
+  "description": "a hello function",
   "memory": 128,
   "timeout": 10,
   "handler": "dist.default",

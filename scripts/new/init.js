@@ -101,7 +101,7 @@ $ npm test
 
 \`\`\`
 $ apex deploy
-$ echo -n '{"query": "query{hello}"}' | apex invoke graphql
+$ apex invoke hello
 \`\`\`
 
 ## deploy infra
@@ -111,7 +111,14 @@ $ apex infra get
 $ apex infra plan
 $ apex infra apply
 <url>
-$ curl -H "Content-Type: application/json" -d '{"query": "query{hello}"}' <url>/dev/graphql
+$ curl -X POST <url>
+\`\`\`
+
+## clean-up
+
+\`\`\`
+$ apex infra destroy
+$ apex delete
 \`\`\``);
     this.updated.add({readme: 'README.md'});
   } catch (err) {

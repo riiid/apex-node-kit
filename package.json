@@ -19,7 +19,6 @@
     "colors": "^1.1.2",
     "eslint": "^3.5.0",
     "eslint-config-google": "^0.6.0",
-    "graphql": "^0.7.1",
     "jest": "^16.0.1",
     "json-loader": "^0.5.4",
     "lodash.values": "^4.3.0",
