@@ -94,7 +94,7 @@ ${this.prompt.description}
 
 \`\`\`
 $ npm run lint
-$ npm test
+$ npm run test:dev
 \`\`\`
 
 ## deploy function

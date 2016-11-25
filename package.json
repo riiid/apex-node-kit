@@ -6,7 +6,9 @@
   "scripts": {
     "new": "node scripts/hasbin yarn && yarn && node scripts/new",
     "lint": "nodemon --watch functions --watch lib --exec eslint functions/** lib/**",
-    "test": "jest --watch"
+    "test": "jest",
+    "test:dev": "jest --watch",
+    "coverage": "jest --coverage"
   },
   "author": "kykim <kykim@riiid.co>",
   "license": "MIT",
