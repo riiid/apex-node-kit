@@ -1,5 +1,7 @@
 # ∆pex-node-kit
 
+[![CircleCI](https://circleci.com/gh/riiid/apex-node-kit.svg?style=shield)](https://circleci.com/gh/riiid/apex-node-kit)
+
 Riiid flavored [apex](https://github.com/apex/apex) starter kit.
 Write & deploy [AWS Lambda](http://aws.amazon.com/lambda/) functions with `webpack` & `babel`. Enjoy :alien:
 
