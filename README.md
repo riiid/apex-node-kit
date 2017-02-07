@@ -12,3 +12,27 @@ $ git clone riiid/apex-node-kit <YOUR_DIR>
 $ cd <YOUR_DIR>
 $ npm run new
 ```
+
+## deploy
+
+### lambda functions
+
+```
+$ apex deploy
+```
+
+### api gateway
+
+after deploy lambda functions,
+
+```
+$ apex infra get
+$ apex infra plan
+$ apex infra apply
+```
+
+> Because of this [issue](https://github.com/hashicorp/terraform/issues/6613), you need to `taint` resource for multiple deployment.
+> ```
+> $ apex infra taint aws_api_gateway_deployment.deployment
+> $ apex infra apply
+> ```
