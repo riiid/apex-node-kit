@@ -14,9 +14,9 @@ resource "aws_api_gateway_resource" "hello" {
   path_part   = "hello"
 }
 
-module "hello-post" {
-  source          = "../../modules/api-gateway-method-post"
-  method          = "POST"
+module "hello-any" {
+  source          = "../../modules/api-gateway-method-any"
+  method          = "ANY"
   rest_api_id     = "${var.api_id}"
   parent_id       = "${var.api_root_resource_id}"
   resource_id     = "${aws_api_gateway_resource.hello.id}"
@@ -28,9 +28,9 @@ module "deploy" {
   source      = "../../modules/api-gateway-deploy"
   rest_api_id = "${var.api_id}"
   stage_name  = "${var.environment}"
-  depends_id  = "${module.hello-post.id}"
+  depends_id  = "${module.hello-any.id}"
 }
 
 output "url" {
-  value = "https://${var.api_id}.execute-api.${var.region}.amazonaws.com/${var.environment}/hello"
+  value = "https://${var.api_id}.execute-api.${var.region}.amazonaws.com/${var.environment}/${aws_api_gateway_resource.hello.path_part}"
 }
