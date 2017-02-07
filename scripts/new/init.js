@@ -60,7 +60,8 @@ Init.prototype.tfvars = function() {
   try {
     var _opt = this.prompt;
     var _tfvars = {
-      name: _opt.name
+      'name': _opt.name,
+      'api-gateway-role': _opt.role_agw
     };
     var filepath = path.join(utils.root, 'infrastructure', 'dev', 'terraform.tfvars');
     fs.writeFileSync(filepath, JSON.stringify(_tfvars, null, 2));
@@ -74,7 +75,7 @@ Init.prototype.project= function() {
     var _opt = this.prompt;
     var _project = Object.assign(project, {
       name: _opt.name,
-      role: _opt.role,
+      role: _opt.role_lambda,
       description: _opt.description
     });
     var filepath = path.join(utils.root, 'project.json');

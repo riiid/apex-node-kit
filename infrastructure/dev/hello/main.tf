@@ -13,10 +13,7 @@ variable "authorization" {
   default = "NONE"
 }
 
-variable "api-gateway-role" {
-  type    = "string"
-  default = "arn:aws:iam::432787031635:role/apigateway-lambda"
-}
+variable "role" {}
 
 resource "aws_api_gateway_resource" "hello" {
   rest_api_id = "${var.api_id}"
@@ -42,7 +39,7 @@ resource "aws_api_gateway_integration" "request_integration" {
   integration_http_method = "POST"
   type                    = "AWS"
   uri                     = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${var.lambda_function}/invocations"
-  credentials             = "${var.api-gateway-role}"
+  credentials             = "${var.role}"
 
   request_templates = {
     "application/json" = <<EOF

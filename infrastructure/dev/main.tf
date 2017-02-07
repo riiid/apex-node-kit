@@ -6,6 +6,8 @@ variable "apex_environment" {}
 
 variable "apex_function_hello" {}
 
+variable "api-gateway-role" {}
+
 variable "deploy_description" {
   default = ""
 }
@@ -22,6 +24,7 @@ module "hello" {
   region               = "${var.aws_region}"
   environment          = "${var.apex_environment}"
   lambda_function      = "${var.apex_function_hello}"
+  role                 = "${var.api-gateway-role}"
 }
 
 resource "aws_api_gateway_deployment" "deployment" {

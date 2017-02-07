@@ -13,10 +13,14 @@ const SCHEMA = {
     description: {
       message: 'description'
     },
-    role: {
-      message: 'IAM role',
+    role_lambda: {
+      message: 'IAM role for Lambda',
       required: true
-    }
+    },
+    role_agw: {
+      message: 'IAM role for API Gateway',
+      required: true
+    },
   }
 };
 
