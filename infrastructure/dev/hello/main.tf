@@ -79,7 +79,8 @@ resource "aws_api_gateway_integration_response" "response_integration" {
   }
 
   response_templates = {
-    "text/html" = "$input.path('$.result')"
+    "text/html"        = "$input.path('$.result')"
+    "application/json" = "input.json('$.result')"
   }
 }
 
