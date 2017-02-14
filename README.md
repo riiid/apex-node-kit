@@ -2,8 +2,14 @@
 
 [![CircleCI](https://circleci.com/gh/riiid/apex-node-kit.svg?style=shield)](https://circleci.com/gh/riiid/apex-node-kit)
 
-Riiid flavored [apex](https://github.com/apex/apex) starter kit.
+Riiid flavored simple backend starter kit with [apex](https://github.com/apex/apex).
 Write & deploy [AWS Lambda](http://aws.amazon.com/lambda/) functions with `webpack` & `babel`. Enjoy :alien:
+
+## features
+
+* Handle every http method (`GET`, `POST` ...) in single lambda function.
+* Support React Server Side Rendering with `GET` request.
+* Support Graphql query with `POST` request.
 
 ## start
 
@@ -11,6 +17,13 @@ Write & deploy [AWS Lambda](http://aws.amazon.com/lambda/) functions with `webpa
 $ git clone riiid/apex-node-kit <YOUR_DIR>
 $ cd <YOUR_DIR>
 $ npm run new
+```
+
+## development
+
+```
+$ npm run lint
+$ npm run test:dev
 ```
 
 ## deploy
