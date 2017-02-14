@@ -1,8 +1,10 @@
 import {Observable} from 'rxjs';
 import Middleware from 'middleware';
+import html from 'html';
+import gql from 'gql';
 
 export default new Middleware()
-  .get(() => Observable.of({'Content-Type': 'text/html', result: 'html'}))
-  .post(() => Observable.of({'Content-Type': 'application/json', result: 'json'}))
-  .default(() => ({'Content-Type': 'text/html', result: 'default response'}))
+  .get(() => html())
+  .post((event) => gql(event))
+  .default(() => ({'Content-Type': 'text/plain', result: 'default response'}))
   .run();
