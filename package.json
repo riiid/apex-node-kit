@@ -23,6 +23,7 @@
     "colors": "^1.1.2",
     "eslint": "^3.14.1",
     "eslint-config-google": "^0.7.1",
+    "eslint-plugin-react": "^6.9.0",
     "graphql": "^0.9.1",
     "jest": "^18.1.0",
     "json-loader": "^0.5.4",
