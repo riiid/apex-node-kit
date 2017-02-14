@@ -1,9 +1,8 @@
-import hello$ from 'hello';
+import {Observable} from 'rxjs';
+import Middleware from 'middleware';
 
-export default (event, context, cb) => {
-  hello$().subscribe(msg => {
-    cb(null, msg);
-  }, err => {
-    cb(err);
-  });
-};
+export default new Middleware()
+  .get(() => Observable.of({'Content-Type': 'text/html', result: 'html'}))
+  .post(() => Observable.of({'Content-Type': 'application/json', result: 'json'}))
+  .default(() => ({'Content-Type': 'text/html', result: 'default response'}))
+  .run();
