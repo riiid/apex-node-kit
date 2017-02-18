@@ -3,11 +3,11 @@ import func from '../';
 describe('functions/hello', () => {
   describe('GET', () => {
     it('should response "text/html" with "GET" request.', done => {
-      const event = {method: 'GET'};
+      const event = {httpMethod: 'GET'};
       const context = {};
       func(event, context, (err, response) => {
         expect(err).toBeNull();
-        expect(response['Content-Type']).toBe('text/html');
+        expect(response.headers['Content-Type']).toBe('text/html');
         done();
       });
     });
@@ -16,26 +16,28 @@ describe('functions/hello', () => {
   describe('POST', () => {
     it('should response with "query {hello}"', done => {
       const event = {
-        method: 'POST', body: {query: 'query {hello}'}
+        httpMethod: 'POST', body: JSON.stringify({query: 'query {hello}'})
       };
       const context = {};
       func(event, context, (err, response) => {
         expect(err).toBeNull();
-        expect(response.result).toEqual({hello: 'hello'});
-        expect(response['Content-Type']).toBe('application/json');
+        expect(response.body)
+          .toEqual(JSON.stringify({hello: 'hello'}, null, 2));
+        expect(response.headers['Content-Type']).toBe('application/json');
         done();
       });
     });
 
     it('should response with "query {helloAsync}".', done => {
       const event = {
-        method: 'POST', body: {query: 'query {helloAsync}'}
+        httpMethod: 'POST', body: JSON.stringify({query: 'query {helloAsync}'})
       };
       const context = {};
       func(event, context, (err, response) => {
         expect(err).toBeNull();
-        expect(response.result).toEqual({helloAsync: 'hello async'});
-        expect(response['Content-Type']).toBe('application/json');
+        expect(response.body)
+          .toEqual(JSON.stringify({helloAsync: 'hello async'}, null, 2));
+        expect(response.headers['Content-Type']).toBe('application/json');
         done();
       });
     });
@@ -46,23 +48,24 @@ describe('functions/hello', () => {
           createHello(prefix: "wow")
         }
       `;
-      const event = {method: 'POST', body: {query}};
+      const event = {httpMethod: 'POST', body: JSON.stringify({query})};
       const context = {};
       func(event, context, (err, response) => {
         expect(err).toBeNull();
-        expect(response.result).toEqual({createHello: 'wow world!'});
-        expect(response['Content-Type']).toBe('application/json');
+        expect(response.body)
+          .toEqual(JSON.stringify({createHello: 'wow world!'}, null, 2));
+        expect(response.headers['Content-Type']).toBe('application/json');
         done();
       });
     });
 
     it('should response error with invalid query.', done => {
       const event = {
-        method: 'POST', body: {query: 'query hello}'}
+        httpMethod: 'POST', body: JSON.stringify({query: 'query hello}'})
       };
       const context = {};
       func(event, context, (err, response) => {
-        expect(err).not.toBeNull();
+        expect(err).toBeNull();
         done();
       });
     });
@@ -70,11 +73,11 @@ describe('functions/hello', () => {
 
   describe('ETC', () => {
     it('should response "text/plain" with unmatched request.', done => {
-      const event = {method: 'ANY'};
+      const event = {httpMethod: 'ANY'};
       const context = {};
       func(event, context, (err, response) => {
         expect(err).toBeNull();
-        expect(response['Content-Type']).toBe('text/plain');
+        expect(response.headers['Content-Type']).toBe('text/plain');
         done();
       });
     });
