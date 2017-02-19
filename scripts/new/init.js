@@ -98,22 +98,28 @@ $ npm run lint
 $ npm run test:dev
 \`\`\`
 
-## deploy function
+## deploy
+
+## lambda function
 
 \`\`\`
 $ apex deploy
 $ apex invoke hello
 \`\`\`
 
-## deploy infra
+### api gateway
 
 \`\`\`
 $ apex infra get
 $ apex infra plan
 $ apex infra apply
-<url>
-$ curl -X POST <url>
 \`\`\`
+
+> Because of this [issue](https://github.com/hashicorp/terraform/issues/6613), you need to \`taint\` resource for multiple deployment.
+> \`\`\`
+> $ apex infra taint aws_api_gateway_deployment.deployment
+> $ apex infra apply
+> \`\`\`
 
 ## clean-up
 
