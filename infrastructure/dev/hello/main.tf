@@ -42,27 +42,6 @@ resource "aws_api_gateway_integration" "request_integration" {
   credentials             = "${var.role}"
 }
 
-resource "aws_api_gateway_method_response" "200" {
-  rest_api_id = "${var.api_id}"
-  resource_id = "${aws_api_gateway_resource.res.id}"
-  http_method = "${aws_api_gateway_method.method.http_method}"
-  status_code = "200"
-
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Headers" = true
-    "method.response.header.Access-Control-Allow-Methods" = true
-    "method.response.header.Access-Control-Allow-Origin"  = true
-    "method.response.header.Content-Type"                 = true
-  }
-}
-
-resource "aws_api_gateway_integration_response" "response_integration" {
-  rest_api_id = "${var.api_id}"
-  resource_id = "${aws_api_gateway_resource.res.id}"
-  http_method = "${aws_api_gateway_method.method.http_method}"
-  status_code = "${aws_api_gateway_method_response.200.status_code}"
-}
-
 output "url" {
   value = "https://${var.api_id}.execute-api.${var.region}.amazonaws.com/${var.environment}/${aws_api_gateway_resource.res.path_part}"
 }
