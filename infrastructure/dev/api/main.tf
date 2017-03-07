@@ -4,7 +4,7 @@ variable "api_root_resource_id" {}
 
 variable "region" {}
 
-variable "environment" {}
+variable "stage" {}
 
 variable "lambda_function" {}
 
@@ -38,10 +38,10 @@ resource "aws_api_gateway_integration" "request_integration" {
   http_method             = "${aws_api_gateway_method.method.http_method}"
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${var.lambda_function}/invocations"
+  uri                     = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${var.lambda_function}:$${stageVariables.alias}/invocations"
   credentials             = "${var.role}"
 }
 
 output "url" {
-  value = "https://${var.api_id}.execute-api.${var.region}.amazonaws.com/${var.environment}/${aws_api_gateway_resource.res.path_part}"
+  value = "https://${var.api_id}.execute-api.${var.region}.amazonaws.com/${var.stage}/api"
 }
