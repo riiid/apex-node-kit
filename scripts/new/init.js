@@ -104,7 +104,7 @@ $ npm run test:dev
 
 \`\`\`
 $ apex deploy
-$ apex invoke hello
+$ apex invoke api
 \`\`\`
 
 ### api gateway

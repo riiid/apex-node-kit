@@ -1,5 +1,5 @@
 {
-  "description": "a hello function",
+  "description": "a api function",
   "memory": 128,
   "timeout": 10,
   "handler": "dist.default",

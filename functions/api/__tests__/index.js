@@ -1,6 +1,6 @@
 import func from '../';
 
-describe('functions/hello', () => {
+describe('functions/api', () => {
   describe('GET', () => {
     it('should response "text/html" with "GET" request.', done => {
       const event = {httpMethod: 'GET'};
