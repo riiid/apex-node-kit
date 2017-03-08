@@ -1,3 +1,4 @@
+const Rx = require('rxjs');
 const path = require('path');
 const prompt = require('prompt');
 const utils = require('./utils');
@@ -27,14 +28,22 @@ const SCHEMA = {
 prompt.message = '';
 prompt.delimiter = ':';
 prompt.colors = false;
-prompt.run = cb => {
-  banner();
-  utils.nl();
-  prompt.start();
-  prompt.get(SCHEMA, (err, result) => {
+prompt.run$ = () => {
+  return Rx.Observable.create(subscriber => {
+    banner();
     utils.nl();
-    cb(err, result);
-    utils.nl();
+    prompt.start();
+    prompt.get(SCHEMA, (err, result) => {
+      utils.nl();
+      if (err) {
+        utils.nl();
+        subscriber.error(err);
+      } else {
+        subscriber.next(result);
+        subscriber.complete();
+      }
+      utils.nl();
+    });
   });
 };
 

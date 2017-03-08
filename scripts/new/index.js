@@ -1,12 +1,11 @@
+require('colors');
 const prompt = require('./prompt');
 const Init = require('./init');
 
-prompt.run((err, result) => {
-  if (err) {
-    console.error('canceled');
-  } else {
-    Init.create(result)
-      .run()
-      .result();
-  }
+prompt.run$().subscribe(result => {
+  Init.create(result)
+    .run()
+    .result();
+}, err => {
+  console.error('canceled'.red);
 });

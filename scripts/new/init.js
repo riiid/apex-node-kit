@@ -1,5 +1,3 @@
-require('colors');
-
 const values = require('lodash.values');
 const fs = require('fs');
 const path = require('path');
